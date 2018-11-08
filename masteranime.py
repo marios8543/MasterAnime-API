@@ -16,8 +16,8 @@ async def Anime(id):
         for i in r['genres']:
             ani.genres.append(data_classes.Genre(i['id'],i['name']))
         for i in r['episodes']:
-            ep = data_classes.Episode
-            for k,v in i.items():
+            ep = data_classes.Episode(ani)
+            for k,v in i['info'].items():
                 setattr(ep,k,v)
             ani.episodes.append(ep)
         return ani
